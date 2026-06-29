@@ -1,44 +1,40 @@
 # Evidence Resume System
 
-Evidence Resume System is a documentation-only methodology for preparing career documents from verifiable claims while keeping privacy and scope boundaries explicit.
+Evidence Resume System is a small Python package for checking neutral claim bundles. It validates JSON structure, checks that claims point to supporting evidence items, renders a deterministic review summary, and scans package text for obvious public-text privacy risks.
 
-It treats a career document as a controlled public narrative, not a place to store every detail. The method separates:
+The included example is synthetic and uses generic review items. It does not describe a real-world subject or a submission artifact.
 
-- durable facts that can be supported;
-- candidate claims that may appear in wording;
-- review decisions that decide whether a claim should be used;
-- final presentation text intended for readers.
+## What It Provides
 
-## Method Principles
+- JSON schemas for evidence items, claims, decisions, and report settings.
+- A command line interface for validation, privacy scanning, and deterministic Markdown summary output.
+- A compact synthetic example for exercising the validation flow.
+- Tests for schema checks, claim-to-evidence links, scanner behavior, and rendering.
 
-- Evidence before wording: write claims only after support has been identified.
-- Minimum necessary detail: include only details needed for the document's purpose.
-- Traceable changes: keep a reviewable rationale when wording, scope or ownership language changes.
-- Privacy by design: review visible text, filenames, metadata, links and attachments before sharing.
-- Fit-for-purpose licensing: match reuse terms and disclaimers to the material actually provided.
+## Install For Local Use
 
-## Workflow
+Use a Python 3.11 or newer environment, then run commands from the package root with `PYTHONPATH=src`:
 
-1. Define the document audience and the decision it should support.
-2. Inventory facts, claims, links and attachments that may appear in the document.
-3. Classify each item as public-ready, needs revision or excluded.
-4. Check whether each public claim is supported and proportionate.
-5. Remove details that are unnecessary, identifying or likely to create misleading inferences.
-6. Review final text for accuracy, privacy, attribution and reuse boundaries.
-7. Share only the reviewed documentation package.
+```bash
+PYTHONPATH=src python3 -m evidence_resume_system --help
+PYTHONPATH=src python3 -m evidence_resume_system validate examples/demo-claim-bundle
+PYTHONPATH=src python3 -m evidence_resume_system render-report examples/demo-claim-bundle
+PYTHONPATH=src python3 -m evidence_resume_system privacy-scan .
+```
 
-## Package Contents
+## Data Shape
 
-This package contains general documentation only:
+A claim bundle contains:
 
-- `README.md`
-- `DISCLAIMER.md`
-- `LICENSE`
+- `evidenceItems`: compact support records with stable identifiers and neutral summaries.
+- `claims`: statements that list the evidence identifiers they depend on.
+- `decisions`: review outcomes that explain whether a claim is approved, blocked, or needs review.
+- `renderConfig`: settings for deterministic Markdown summary output.
 
-It does not include resumes, samples, templates, personal profiles, project records, datasets, logs, diagnostics, screenshots, account links or tooling.
+Each synthetic bundle marks itself with `synthetic: true`.
 
-## Use
+## Boundaries
 
-Use this methodology as a reference for designing a privacy-aware, evidence-backed career-document process. Adapt it to your own context and get appropriate review before relying on it.
+This package is for public package validation patterns and neutral demonstration data. It does not provide hiring, legal, compliance, or professional advice. Review any real use case with appropriate human judgment before relying on generated results.
 
-Read [DISCLAIMER.md](DISCLAIMER.md) and [LICENSE](LICENSE) before using or adapting the material.
+Docs and examples use the CC-BY-4.0 license in `LICENSE`. Code, schemas, tests, and fixtures use the MIT license in `LICENSE-CODE`.

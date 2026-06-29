@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "claim-bundle-1",
+  "synthetic": true,
+  "bundleId": "demo-missing-link",
+  "evidenceItems": [
+    {"evidenceId": "ev-present", "kind": "check", "summary": "One support item is present."}
+  ],
+  "claims": [
+    {"claimId": "cl-missing", "statement": "This claim has a missing support link.", "claimStatus": "blocked", "evidenceIds": ["ev-absent"], "reviewRequired": true}
+  ],
+  "decisions": [],
+  "renderConfig": {"title": "Missing Link Review", "includeSections": ["claims"]}
+}

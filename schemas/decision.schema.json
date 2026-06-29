@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "decision-schema-1",
+  "type": "object",
+  "required": ["decisionId", "decisionStatus", "rationale", "relatedClaimIds"],
+  "properties": {
+    "decisionId": {"type": "string", "pattern": "^dc-[a-z0-9-]+$"},
+    "decisionStatus": {"type": "string", "enum": ["approved", "blocked", "reviewRequired"]},
+    "rationale": {"type": "string", "minLength": 1},
+    "relatedClaimIds": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "evidenceIds": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

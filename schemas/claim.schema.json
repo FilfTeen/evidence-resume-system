@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "claim-schema-1",
+  "type": "object",
+  "required": ["claimId", "statement", "claimStatus", "evidenceIds"],
+  "properties": {
+    "claimId": {"type": "string", "pattern": "^cl-[a-z0-9-]+$"},
+    "statement": {"type": "string", "minLength": 1},
+    "claimStatus": {"type": "string", "enum": ["approved", "blocked", "reviewRequired"]},
+    "evidenceIds": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "reviewRequired": {"type": "boolean"}
+  },
+  "additionalProperties": false
+}

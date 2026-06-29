@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "render-config-schema-1",
+  "type": "object",
+  "required": ["title", "includeSections"],
+  "properties": {
+    "title": {"type": "string", "minLength": 1},
+    "includeSections": {
+      "type": "array",
+      "items": {"type": "string", "enum": ["claims", "decisions", "evidenceSummary"]},
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false
+}

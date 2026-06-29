@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "claim-bundle-schema-1",
+  "type": "object",
+  "required": ["schemaVersion", "synthetic", "bundleId", "evidenceItems", "claims", "decisions", "renderConfig"],
+  "properties": {
+    "schemaVersion": {"type": "string", "const": "claim-bundle-1"},
+    "synthetic": {"type": "boolean", "const": true},
+    "bundleId": {"type": "string", "pattern": "^demo-[a-z0-9-]+$"},
+    "evidenceItems": {"type": "array", "items": {"schemaRef": "evidence.schema.json"}},
+    "claims": {"type": "array", "items": {"schemaRef": "claim.schema.json"}},
+    "decisions": {"type": "array", "items": {"schemaRef": "decision.schema.json"}},
+    "renderConfig": {"schemaRef": "render-config.schema.json"}
+  },
+  "additionalProperties": false
+}

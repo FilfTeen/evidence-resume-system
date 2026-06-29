@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "evidence-schema-1",
+  "type": "object",
+  "required": ["evidenceId", "kind", "summary"],
+  "properties": {
+    "evidenceId": {"type": "string", "pattern": "^ev-[a-z0-9-]+$"},
+    "kind": {"type": "string", "enum": ["check", "note", "review"]},
+    "summary": {"type": "string", "minLength": 1},
+    "supports": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

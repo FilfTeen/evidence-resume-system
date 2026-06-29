@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "evidence-resume-system"
+version = "0.1.0"
+description = "Validation tools for neutral claim bundles and synthetic review examples."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT AND CC-BY-4.0"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "License :: OSI Approved :: MIT License",
+  "License :: Creative Commons Attribution 4.0 International",
+]
+
+[project.scripts]
+evidence-resume-system = "evidence_resume_system.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

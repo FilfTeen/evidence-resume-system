@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "claim-bundle-1",
+  "synthetic": true,
+  "bundleId": "demo-fixture",
+  "evidenceItems": [
+    {"evidenceId": "ev-alpha", "kind": "check", "summary": "Required section alpha is present."},
+    {"evidenceId": "ev-beta", "kind": "review", "summary": "Required section beta is linked."}
+  ],
+  "claims": [
+    {"claimId": "cl-alpha", "statement": "Alpha section can be validated.", "claimStatus": "approved", "evidenceIds": ["ev-alpha"], "reviewRequired": false},
+    {"claimId": "cl-beta", "statement": "Beta section has a supporting item.", "claimStatus": "reviewRequired", "evidenceIds": ["ev-beta"], "reviewRequired": true}
+  ],
+  "decisions": [
+    {"decisionId": "dc-alpha", "decisionStatus": "approved", "rationale": "Alpha passed the review check.", "relatedClaimIds": ["cl-alpha"], "evidenceIds": ["ev-alpha"]}
+  ],
+  "renderConfig": {"title": "Fixture Review Report", "includeSections": ["claims", "decisions", "evidenceSummary"]}
+}

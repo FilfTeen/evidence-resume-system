@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "claim-bundle-1",
+  "synthetic": true,
+  "bundleId": "demo-quality-review",
+  "evidenceItems": [
+    {
+      "evidenceId": "ev-structure-check",
+      "kind": "check",
+      "summary": "The bundle contains all required top-level sections.",
+      "supports": ["cl-structure-ready"]
+    },
+    {
+      "evidenceId": "ev-link-review",
+      "kind": "review",
+      "summary": "Every claim references at least one listed evidence item.",
+      "supports": ["cl-links-complete"]
+    },
+    {
+      "evidenceId": "ev-wording-note",
+      "kind": "note",
+      "summary": "The summary text uses neutral labels and avoids person-centered sections.",
+      "supports": ["cl-wording-neutral"]
+    }
+  ],
+  "claims": [
+    {
+      "claimId": "cl-structure-ready",
+      "statement": "The review bundle has the required structure for validation.",
+      "claimStatus": "approved",
+      "evidenceIds": ["ev-structure-check"],
+      "reviewRequired": false
+    },
+    {
+      "claimId": "cl-links-complete",
+      "statement": "The claim list can be checked against evidence identifiers.",
+      "claimStatus": "approved",
+      "evidenceIds": ["ev-link-review"],
+      "reviewRequired": false
+    },
+    {
+      "claimId": "cl-wording-neutral",
+      "statement": "The rendered summary stays in a neutral review format.",
+      "claimStatus": "reviewRequired",
+      "evidenceIds": ["ev-wording-note"],
+      "reviewRequired": true
+    }
+  ],
+  "decisions": [
+    {
+      "decisionId": "dc-structure-pass",
+      "decisionStatus": "approved",
+      "rationale": "Required sections are present and internally linked.",
+      "relatedClaimIds": ["cl-structure-ready", "cl-links-complete"],
+      "evidenceIds": ["ev-structure-check", "ev-link-review"]
+    },
+    {
+      "decisionId": "dc-wording-review",
+      "decisionStatus": "reviewRequired",
+      "rationale": "Neutral wording should stay visible in the rendered report.",
+      "relatedClaimIds": ["cl-wording-neutral"],
+      "evidenceIds": ["ev-wording-note"]
+    }
+  ],
+  "renderConfig": {
+    "title": "Demo Quality Review Report",
+    "includeSections": ["claims", "decisions", "evidenceSummary"]
+  }
+}
